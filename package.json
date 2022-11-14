@@ -1,0 +1,27 @@
+{
+  "name": "api-routes",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedrofaleiros/api-routes.git"
+  },
+  "author": "pedrofaleiros <pedrocrfaleiros@yahoo.com.br>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "nodemon": "^2.0.20"
+  },
+  "bugs": {
+    "url": "https://github.com/pedrofaleiros/api-routes/issues"
+  },
+  "homepage": "https://github.com/pedrofaleiros/api-routes#readme",
+  "description": ""
+}
