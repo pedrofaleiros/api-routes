@@ -6,7 +6,7 @@ class Grafo {
 		this.vertices = [];
 		this.num_vertices = num_vertices;
 		this.rota_otima = [];
-		this.menor_distancia = 999999;
+		this.menor_distancia = Number.MAX_SAFE_INTEGER;
 
 		for(let i = 0; i < num_vertices; i++){
 			this.vertices.push(new Vertice());
@@ -37,7 +37,7 @@ class Grafo {
 
 	}
 
-	calcula_distancia(route){
+	calcula_route_distancia(route){
 		let distancia = 0;
 		let tam = route.length;
 
@@ -49,7 +49,7 @@ class Grafo {
 
 	caixeiro(origin){
 		this.rota_otima = [...Array(this.num_vertices+1).fill(0)];
-		this.menor_distancia = 999999;
+		this.menor_distancia = Number.MAX_SAFE_INTEGER;
 
 		var indice = 0;
 		const route = [...Array(this.num_vertices+1).fill(0)];
@@ -76,10 +76,24 @@ class Grafo {
 
 	viajante(origin, visitados, route, indice, elemento, distancia){
 
-		if(distancia > this.menor_distancia) return;
+		if(distancia >= this.menor_distancia) return;
+
+		route[indice] = elemento;
+		
+		if(indice == this.num_vertices-1){
+			let dist = distancia + this.getDistancia(origin, elemento);
+
+			if(dist < this.menor_distancia){
+				this.menor_distancia = dist;
+				/* for(let i = 0; i <= this.num_vertices; i++){
+					this.rota_otima[i] = route[i]
+				} */
+				this.rota_otima = [...route]
+			}
+			return;
+		}
 
 		visitados[elemento] = 1;
-		route[indice] = elemento;
 
 		let tam = this.vertices[elemento].getTamanhoLista();
 
@@ -89,17 +103,6 @@ class Grafo {
 
 			if(visitados[el_lista] == 0){
 				this.viajante(origin, visitados, route, indice+1, el_lista, distancia+el_dist);
-			}
-		}
-
-		if(indice == this.num_vertices-1){
-			let dist = distancia + this.getDistancia(origin, elemento);
-
-			if(dist <= this.menor_distancia){
-				this.menor_distancia = dist;
-				for(let i = 0; i <= this.num_vertices; i++){
-					this.rota_otima[i] = route[i]
-				}
 			}
 		}
 
