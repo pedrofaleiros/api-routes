@@ -29,15 +29,14 @@ app.post('/get-route', (req, res)=>{
         const numv = req.body.vertices;
         const arestas = req.body.arestas;
 
-        const g = new Grafo(numv);
+        if(numv > 11) return res.json({"status":"Erro"});
 
-        console.log(numv)
-        console.log(arestas)
+        const g = new Grafo(numv);
 
         for(let i = 0; i < arestas.length; i++){
             let x = arestas[i][0];
             let y = arestas[i][1];
-            let peso = parseFloat(arestas[i][2].split(' ')[0]);
+            let peso = parseFloat(arestas[i][2]);
 
             g.addAresta(x, y, peso);
         }
@@ -46,7 +45,6 @@ app.post('/get-route', (req, res)=>{
 
         const route = result.rota;
         const peso = result.peso;
-        console.log(route, peso);
 
         return res.json({'rota': route, 'distancia':peso});
     }else{
