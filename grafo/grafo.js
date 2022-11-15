@@ -6,7 +6,7 @@ class Grafo {
 		this.vertices = [];
 		this.num_vertices = num_vertices;
 		this.rota_otima = [];
-		this.menor_distancia = 9999;
+		this.menor_distancia = 999999;
 
 		for(let i = 0; i < num_vertices; i++){
 			this.vertices.push(new Vertice());

@@ -17,6 +17,7 @@ app.get('/teste', (req, res) => {
     g.addAresta(0, 2, 3);
     g.addAresta(1, 2, 3);
 
+
     console.log(g.caixeiro(0));
 
     return res.json({ "status": "OK"});
@@ -30,10 +31,13 @@ app.post('/get-route', (req, res)=>{
 
         const g = new Grafo(numv);
 
+        console.log(numv)
+        console.log(arestas)
+
         for(let i = 0; i < arestas.length; i++){
             let x = arestas[i][0];
             let y = arestas[i][1];
-            let peso = arestas[i][2];
+            let peso = parseFloat(arestas[i][2].split(' ')[0]);
 
             g.addAresta(x, y, peso);
         }
@@ -42,6 +46,7 @@ app.post('/get-route', (req, res)=>{
 
         const route = result.rota;
         const peso = result.peso;
+        console.log(route, peso);
 
         return res.json({'rota': route, 'distancia':peso});
     }else{
