@@ -61,7 +61,7 @@ class Grafo {
 
 		var tam = this.vertices[origin].getTamanhoLista();
 
-		for(let i = 0; i < tam; i++){
+		for(let i = 0; i < tam-1; i++){
 			let elemento = this.vertices[origin].getListaAdj()[i]
 			let distancia = this.vertices[origin].getListaPeso()[i]
 
