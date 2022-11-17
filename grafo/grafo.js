@@ -48,6 +48,9 @@ class Grafo {
 	}
 
 	tsp(origin){
+
+		if(this.num_vertices < 4) return false;
+
 		this.rota_otima = [...Array(this.num_vertices+1).fill(0)];
 		this.menor_distancia = Number.MAX_SAFE_INTEGER;
 
