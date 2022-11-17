@@ -47,7 +47,7 @@ class Grafo {
 		return distancia;
 	}
 
-	caixeiro(origin){
+	tsp(origin){
 		this.rota_otima = [...Array(this.num_vertices+1).fill(0)];
 		this.menor_distancia = Number.MAX_SAFE_INTEGER;
 
@@ -65,7 +65,7 @@ class Grafo {
 			let elemento = this.vertices[origin].getListaAdj()[i]
 			let distancia = this.vertices[origin].getListaPeso()[i]
 
-			this.viajante(origin, visitados, route, indice+1, elemento, distancia);
+			this.recursiva(origin, visitados, route, indice+1, elemento, distancia);
 		}
 
 		return {
@@ -74,7 +74,7 @@ class Grafo {
 		}
 	}
 
-	viajante(origin, visitados, route, indice, elemento, distancia){
+	recursiva(origin, visitados, route, indice, elemento, distancia){
 
 		if(distancia >= this.menor_distancia) return;
 
@@ -102,7 +102,7 @@ class Grafo {
 			let el_dist = this.vertices[elemento].getListaPeso()[i];
 
 			if(visitados[el_lista] == 0){
-				this.viajante(origin, visitados, route, indice+1, el_lista, distancia+el_dist);
+				this.recursiva(origin, visitados, route, indice+1, el_lista, distancia+el_dist);
 			}
 		}
 

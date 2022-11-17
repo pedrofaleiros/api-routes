@@ -1,25 +1,14 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-//const res = require('express/lib/response');
 const Grafo = require('./grafo/grafo.js');
 
-//yarn dev
+const port = 3000;
 
 app.use(express.json());
 app.use(cors());
 
 app.get('/teste', (req, res) => {
-
-    const g = new Grafo(3);
-
-    g.addAresta(0, 1, 3);
-    g.addAresta(0, 2, 3);
-    g.addAresta(1, 2, 3);
-
-
-    console.log(g.caixeiro(0));
-
     return res.json({ "status": "OK"});
 });
 
@@ -41,7 +30,7 @@ app.post('/get-route', (req, res)=>{
             g.addAresta(x, y, peso);
         }
 
-        const result = g.caixeiro(0);
+        const result = g.tsp(0);
 
         const route = result.rota;
         const peso = result.peso;
@@ -52,10 +41,8 @@ app.post('/get-route', (req, res)=>{
     }
 });
 
-const port = 3000;
-
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`listening on port ${port}`)
 });
 
 /* 

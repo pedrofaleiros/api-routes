@@ -24,4 +24,4 @@ g.addAresta(3, 6, 40);
 g.addAresta(4, 6, 48);
 g.addAresta(5, 6, 58);
 
-console.log(g.caixeiro(0));
+console.log(g.tsp(0));
