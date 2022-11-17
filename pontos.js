@@ -35,12 +35,14 @@ for(let i = 0; i < pontos.length-1; i++){
         p2 = new Ponto(pontos[j][0], pontos[j][1]);
         dist = dist_pontos(p1, p2);
         grafo.addAresta(i, j, dist);
+
+        console.log(i, j, dist)
     }
 }
 
-console.time('tempo')
+/* console.time('tempo')
 const res = grafo.tsp(0);
 console.timeEnd('tempo')
 
 console.log('Numero de vertices:', grafo.num_vertices)
-console.log(res);
+console.log(res); */

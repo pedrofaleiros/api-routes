@@ -18,7 +18,7 @@ app.post('/get-route', (req, res)=>{
         const numv = req.body.vertices;
         const arestas = req.body.arestas;
 
-        if(numv > 11) return res.json({"status":"Erro"});
+        if(numv > 12) return res.json({"status":"Erro"});
 
         const g = new Grafo(numv);
 
