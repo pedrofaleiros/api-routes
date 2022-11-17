@@ -51,7 +51,7 @@ class Grafo {
 		this.rota_otima = [...Array(this.num_vertices+1).fill(0)];
 		this.menor_distancia = Number.MAX_SAFE_INTEGER;
 
-		var indice = 0;
+		let indice = 0;
 		const route = [...Array(this.num_vertices+1).fill(0)];
 		const visitados = [...Array(this.num_vertices).fill(0)];
 		
@@ -59,8 +59,7 @@ class Grafo {
 		route[0] = origin;
 		route[this.num_vertices] = origin;
 
-		var tam = this.vertices[origin].getTamanhoLista();
-
+		let tam = this.vertices[origin].getTamanhoLista();
 		for(let i = 0; i < tam-1; i++){
 			let elemento = this.vertices[origin].getListaAdj()[i]
 			let distancia = this.vertices[origin].getListaPeso()[i]
@@ -85,27 +84,21 @@ class Grafo {
 
 			if(dist < this.menor_distancia){
 				this.menor_distancia = dist;
-				/* for(let i = 0; i <= this.num_vertices; i++){
-					this.rota_otima[i] = route[i]
-				} */
 				this.rota_otima = [...route]
 			}
 			return;
 		}
-
 		visitados[elemento] = 1;
 
 		let tam = this.vertices[elemento].getTamanhoLista();
-
 		for(let i = 0; i < tam; i++){
-			let el_lista = this.vertices[elemento].getListaAdj()[i];
-			let el_dist = this.vertices[elemento].getListaPeso()[i];
-
-			if(visitados[el_lista] == 0){
-				this.recursiva(origin, visitados, route, indice+1, el_lista, distancia+el_dist);
+			// let el_lista = this.vertices[elemento].getListaAdj()[i];
+			// let el_dist = this.vertices[elemento].getListaPeso()[i];
+			if(visitados[this.vertices[elemento].getListaAdj()[i]] == 0){
+				this.recursiva(origin, visitados, route, indice+1, this.vertices[elemento].getListaAdj()[i], distancia+this.vertices[elemento].getListaPeso()[i]);
+				// this.recursiva(origin, visitados, route, indice+1, el_lista, distancia+el_dist);
 			}
 		}
-
 		visitados[elemento] = 0;
 	}
 }
