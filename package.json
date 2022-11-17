@@ -9,7 +9,7 @@
   "author": "pedrofaleiros <pedrocrfaleiros@yahoo.com.br>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon index.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
