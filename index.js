@@ -9,7 +9,7 @@ function dist_pontos(p1, p2) {
     return Math.sqrt(distancia);
 }
 
-const port = process.env.PORT || 3000;
+const port = Process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors());
