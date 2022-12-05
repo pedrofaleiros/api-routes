@@ -47,7 +47,7 @@ class Grafo {
 		return distancia;
 	}
 
-	tsp(origin){
+	melhor_rota(origin){
 
 		if(this.num_vertices < 4) return false;
 

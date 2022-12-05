@@ -36,7 +36,7 @@ app.post('/get-route', (req, res) => {
             g.addAresta(x, y, peso);
         }
 
-        const result = g.tsp(0);
+        const result = g.melhor_rota(0);
 
         const route = result.rota;
         const peso = result.peso;
@@ -67,7 +67,7 @@ app.post('/get-route-pts', (req, res) => {
             }
         }
 
-        const result = grafo.tsp(0);
+        const result = grafo.melhor_rota(0);
 
         const route = result.rota;
         const peso = result.peso;
