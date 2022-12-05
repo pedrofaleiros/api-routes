@@ -95,11 +95,8 @@ class Grafo {
 
 		let tam = this.vertices[elemento].getTamanhoLista();
 		for(let i = 0; i < tam; i++){
-			// let el_lista = this.vertices[elemento].getListaAdj()[i];
-			// let el_dist = this.vertices[elemento].getListaPeso()[i];
 			if(visitados[this.vertices[elemento].getListaAdj()[i]] == 0){
 				this.recursiva(origin, visitados, route, indice+1, this.vertices[elemento].getListaAdj()[i], distancia+this.vertices[elemento].getListaPeso()[i]);
-				// this.recursiva(origin, visitados, route, indice+1, el_lista, distancia+el_dist);
 			}
 		}
 		visitados[elemento] = 0;
